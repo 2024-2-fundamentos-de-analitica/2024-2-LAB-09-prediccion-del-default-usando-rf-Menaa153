@@ -54,11 +54,13 @@ METRICS = [
 #
 # Internal tests
 #
+import joblib
+
 def _load_model():
-    """Generic test to load a model"""
+    """Cargar el modelo correctamente"""
     assert os.path.exists(MODEL_FILENAME)
     with gzip.open(MODEL_FILENAME, "rb") as file:
-        model = pickle.load(file)
+        model = joblib.load(file)  # Usar joblib en lugar de pickle
     assert model is not None
     return model
 
@@ -128,11 +130,12 @@ def _test_metrics(metrics):
 
 def test_homework():
     """Tests"""
-
+    
     model = _load_model()
+    print(f"🔍 Modelo cargado en el test: {type(model)}")  # Debería ser GridSearchCV
     x_train, y_train, x_test, y_test = _load_grading_data()
     metrics = _load_metrics()
-
+    
     _test_components(model)
     _test_scores(model, x_train, y_train, x_test, y_test)
     _test_metrics(metrics)
