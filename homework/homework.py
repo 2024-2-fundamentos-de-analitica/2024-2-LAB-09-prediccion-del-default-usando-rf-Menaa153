@@ -165,8 +165,8 @@ def optimize_hyperparameters(pipeline, X_train, y_train):
     grid_search = GridSearchCV(pipeline, param_grid, cv=5, scoring="balanced_accuracy", n_jobs=-1)
     grid_search.fit(X_train, y_train)
 
-    print(f"✅ Mejor precisión encontrada: {grid_search.best_score_}")
-    print(f"🔍 Mejores hiperparámetros: {grid_search.best_params_}")
+    print(f"Mejor precisión encontrada: {grid_search.best_score_}")
+    print(f"Mejores hiperparámetros: {grid_search.best_params_}")
 
 
 
@@ -258,9 +258,9 @@ def main():
     metrics_path = "../files/output/metrics.json"
     save_metrics([metrics_train, cm_train, metrics_test, cm_test], metrics_path)
 
-    print(f"✅ Modelo guardado en {model_path}. Métricas en {metrics_path}.")
-    print(f"🔍 Precisión en train: {model.score(X_train, y_train)}")
-    print(f"🔍 Precisión en test: {model.score(X_test, y_test)}")
+    print(f"Modelo guardado en {model_path}. Métricas en {metrics_path}.")
+    print(f"Precisión en train: {model.score(X_train, y_train)}")
+    print(f"Precisión en test: {model.score(X_test, y_test)}")
 
 
 if __name__ == "__main__":
